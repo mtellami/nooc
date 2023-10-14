@@ -1,0 +1,34 @@
+[
+ {
+  "directory": "/home/mtellami/Dev/Nooc",
+  "arguments": [
+   "g++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "inc",
+   "-c",
+   "-o",
+   "src/nooc.o",
+   "src/nooc.cpp"
+  ],
+  "file": "src/nooc.cpp"
+ },
+ {
+  "directory": "/home/mtellami/Dev/Nooc",
+  "arguments": [
+   "g++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "inc",
+   "-c",
+   "-o",
+   "src/open.o",
+   "src/open.cpp"
+  ],
+  "file": "src/open.cpp"
+ }
+]
