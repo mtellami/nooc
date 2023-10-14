@@ -20,5 +20,4 @@
 
 ## Options:
 + --host || -h
-+ --list || -l 
 + --port || -p
