@@ -2,6 +2,5 @@
 
 using namespace std;
 
-int main() {
-	cout << "Start build" << endl;
+int main(int argc, char **argv) {
 }
