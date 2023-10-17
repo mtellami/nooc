@@ -1,29 +1,18 @@
 NAME = nooc
+CPPFLAGS = -Wall -Wextra -Werror -I inc
 
-CPPFLAGS = -Wall -Wextra -Werror -I $(INC)
-CC = c++
-CLEAR = rm -rf
-
-INC = inc
-SRC = src/nooc.cpp \
-	src/open.cpp \
-	src/scanner.cpp \
-	src/dns_resolve.cpp
-
+SRC = src/nooc.cpp src/open.cpp src/scanner.cpp src/dns_resolve.cpp src/init.cpp
 OBJ = $(SRC:.cpp=.o)
-
-.o: .cpp
-	$(CC) $(CPPFLAGS) -c $< -o $@
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	@c++ $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 clean :
-	$(CLEAR) $(OBJ)
+	@rm -rf $(OBJ)
 
 fclean : clean
-	$(CLEAR) $(NAME)
+	@rm -rf $(NAME)
 
 re : fclean all

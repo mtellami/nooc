@@ -9,13 +9,23 @@
 // CPP
 #include <iostream>
 #include <vector>
+#include <cctype>
+#include <mutex>
+#include <thread>
 
 using namespace std;
+
+typedef struct param {
+	string 	host;
+	int 		first_port;
+	int 		last_port;
+} param;
 
 #define ERR -1
 #define MAX_PORT 65535
 
 bool is_open_port(string &host, int port);
-vector<int> scanner(string host, int start, int end);
+void scanner(param scan, vector<int> &open_ports, mutex &mtx);
 string dns_resolve(string &hostname);
+param init(int argc, char **argv);
 

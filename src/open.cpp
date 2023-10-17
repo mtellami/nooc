@@ -1,4 +1,4 @@
-#include "nooc.h"
+#include "nooc.hpp"
 
 bool is_open_port(string &host, int port) {
 	int sock = socket(AF_INET, SOCK_STREAM, 0);

@@ -1,4 +1,4 @@
-#include "nooc.h"
+#include "nooc.hpp"
 
 string dns_resolve(string &hostname) {
 	struct hostent* he = gethostbyname(hostname.c_str());

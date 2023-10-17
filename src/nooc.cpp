@@ -1,19 +1,32 @@
-#include "nooc.h"
+#include "nooc.hpp"
 
 int main(int argc, char **argv) {
-	if (argc != 2) {
-		cerr << "Usage: nooc <host>" << endl;
-		return EXIT_FAILURE;
-	}
+	vector<thread> threads;
+	vector<int> open_ports;
+	mutex mtx;
 
 	try {
-		string host = argv[1];
-		vector<int> open_ports = scanner(host, 0, MAX_PORT);
+		param scan = init(argc, argv);
+		int numThreads = thread::hardware_concurrency();
+		int chunk = (scan.last_port - scan.first_port + 1) / numThreads;
+
+		for (int i = 0; i < numThreads; i++) {
+			param range;
+			range.host = scan.host;
+			range.first_port = scan.first_port + i * chunk;
+			range.last_port = i == numThreads - 1 ? scan.last_port : range.first_port + chunk - 1;
+			threads.emplace_back(scanner, range, ref(open_ports), ref(mtx));
+		}
+
+		for (thread& thread : threads) {
+			thread.join();
+		}
+
 		if (open_ports.empty()) {
-			cout << "No open ports found on " << host << endl;
+			cout << "No open ports found on " << scan.host << endl;
 		} else {
 			for (int port : open_ports) {
-				cout << host << ":" << port << endl;
+				cout << scan.host << ":" << port << endl;
 			}
 		}
 	} catch (exception &e) {
