@@ -1,5 +1,4 @@
-#include "nooc.h"
-#include <cctype>
+#include "nooc.hpp"
 
 bool isDomain(string hostname) {
 	for (char c : hostname) {
@@ -10,18 +9,14 @@ bool isDomain(string hostname) {
 	return false;
 }
 
-vector<int> scanner(string host, int start, int end) {
-	vector<int> open_ports;
-	if (start < 0 || end < 0) {
-		return open_ports;
+void scanner(param scan, vector<int> &open_ports, mutex &mtx) {
+	if (isDomain(scan.host)) {
+		scan.host = dns_resolve(scan.host);
 	}
-	if (isDomain(host)) {
-		host = dns_resolve(host);
-	}
-	for (int port = start; port < end; port++) {
-		if (is_open_port(host, port)) {
+	for (int port = scan.first_port; port <= scan.last_port; port++) {
+		if (is_open_port(scan.host, port)) {
+			lock_guard<mutex> lock(mtx);
 			open_ports.push_back(port);
 		}
 	}
-	return open_ports;
 }

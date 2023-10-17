@@ -8,7 +8,8 @@ INC = inc
 SRC = src/nooc.cpp \
 	src/open.cpp \
 	src/scanner.cpp \
-	src/dns_resolve.cpp
+	src/dns_resolve.cpp \
+	src/init.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
