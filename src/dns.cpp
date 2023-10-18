@@ -1,7 +1,5 @@
 #include "nooc.hpp"
-#include <cstring>
-#include <arpa/inet.h>
-#include <netdb.h>
+
 string dns(string &hostname) {
 	struct addrinfo hints, *result, *p;
   char ipstr[INET6_ADDRSTRLEN];
@@ -12,8 +10,7 @@ string dns(string &hostname) {
 
   int status = getaddrinfo(hostname.c_str(), NULL, &hints, &result);
   if (status) {
-		cout << "heere  ." << endl;
-		return "";
+		throw Error("nooc: error dns resolve domain");
 	}
 
   for (p = result; p != nullptr; p = p->ai_next) {
@@ -29,7 +26,6 @@ string dns(string &hostname) {
   }
   freeaddrinfo(result);
 
-	cout << "==========. >" << ipstr << endl;
   return ipstr;
 }
 

@@ -1,5 +1,7 @@
 #include "nooc.hpp"
 
+// make it Support IPV6 latter ..
+
 bool is_open_port(string &host, int port) {
 	int sock = socket(AF_INET, SOCK_STREAM, 0);
 	if (sock == -1) {

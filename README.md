@@ -14,7 +14,7 @@
 ### Features 
 - Fast scan using hardware supported thread.
 - DNS resolve
-- IPv4/IPv6 Port scan
+- IPv4 Port scan
 
 ### Usage
 

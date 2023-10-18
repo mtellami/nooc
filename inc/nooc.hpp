@@ -13,6 +13,9 @@
 #include <mutex>
 #include <thread>
 #include <regex>
+#include <cstring>
+#include <arpa/inet.h>
+#include <netdb.h>
 
 #define MAX_PORT 65535
 
