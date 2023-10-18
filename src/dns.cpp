@@ -1,6 +1,6 @@
 #include "nooc.hpp"
 
-string dns_resolve(string &hostname) {
+string dns(string &hostname) {
 	struct hostent* he = gethostbyname(hostname.c_str());
   if (!he) {
     return hostname;

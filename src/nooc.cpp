@@ -25,11 +25,15 @@ int main(int argc, char **argv) {
 		if (open_ports.empty()) {
 			cout << "No open ports found on " << scan.host << endl;
 		} else {
+			cout << "open ports:" << endl << endl;
 			for (int port : open_ports) {
 				cout << scan.host << ":" << port << endl;
 			}
 		}
 	} catch (exception &e) {
 		cerr << e.what() << endl;
+		return EXIT_FAILURE;
 	}
+	return EXIT_SUCCESS;
 }
+

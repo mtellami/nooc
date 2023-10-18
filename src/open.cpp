@@ -2,7 +2,7 @@
 
 bool is_open_port(string &host, int port) {
 	int sock = socket(AF_INET, SOCK_STREAM, 0);
-	if (sock == ERR) {
+	if (sock == -1) {
 		throw "socket system call failed";
 	}
 
