@@ -11,7 +11,7 @@ bool isDomain(string hostname) {
 
 void scanner(param scan, vector<int> &open_ports, mutex &mtx) {
 	if (isDomain(scan.host)) {
-		scan.host = dns_resolve(scan.host);
+		scan.host = dns(scan.host);
 	}
 	for (int port = scan.first_port; port <= scan.last_port; port++) {
 		if (is_open_port(scan.host, port)) {
