@@ -8,3 +8,4 @@ string dns(string &hostname) {
   struct in_addr** addr_list = reinterpret_cast<struct in_addr**>(he->h_addr_list);
   return inet_ntoa(*addr_list[0]);
 }
+

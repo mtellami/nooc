@@ -15,3 +15,4 @@ bool is_open_port(string &host, int port) {
 	close(sock);
 	return !open;
 }
+

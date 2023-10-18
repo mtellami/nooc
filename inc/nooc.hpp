@@ -41,3 +41,4 @@ void scanner(param scan, vector<int> &open_ports, mutex &mtx);
 string dns(string &hostname);
 param init(int argc, char **argv);
 range ports(string input);
+
